@@ -39,7 +39,9 @@ public class Minimarket {
 		return admittedPersons;
 	}
 	
-	public void enterOrNot(String t, int n){
+	public String enterOrNot(String t, int n){
+		enterTries += 1;
+		
 		if(t.equalsIgnoreCase(CC) || t.equalsIgnoreCase(CE) || t.equalsIgnoreCase(P)) {
 			String nStr = n + "";
 			
@@ -50,10 +52,17 @@ public class Minimarket {
 			if(n%2 == 0) {
 				addPerson(t,n);
 				
+				return "Succcessful entry!";
+			}
+			
+			else {
+				return "Failed entry!";
 			}
 		}
-	
-		enterTries += 1;
+		
+		else {
+			return "Failed entry!";
+		}
 	}
 	
 	public void addPerson(String idType, int idNumber) {
