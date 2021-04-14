@@ -63,6 +63,7 @@ public class Main {
 			
 			result = m.enterOrNot(type, num);
 			System.out.println(result);
+			menu();
 			break;
 		
 		case 2:
@@ -72,10 +73,14 @@ public class Main {
 			
 			result = m.enterOrNot(type, num);
 			System.out.println(result);
+			menu();
 			break;
 
 		case 3:
 			System.out.println("You can not enter because you have TI.\nYou can do another thing if you want.\n");
+			
+			result = m.enterOrNot("", 0);
+			System.out.println(result);
 			menu();
 			break;
 
@@ -85,7 +90,8 @@ public class Main {
 			num = Integer.parseInt(sc.nextLine());
 			
 			result = m.enterOrNot(type, num);
-			System.out.println(result);			
+			System.out.println(result);
+			menu();
 			break;
 
 		default:
@@ -96,10 +102,12 @@ public class Main {
 	}
 	
 	public static void seeAttempts() {
-		
+		System.out.println("The quantity of entry attempts is: " + m.getEnterTries() + "\n");
+		menu();
 	}
 	
 	public static void exit() {
+		System.out.println("Good bye! :-)");
 		
 	}
 }
