@@ -55,6 +55,8 @@ public class Main {
 		System.out.println("1) CC.\n2) CE.\n3) TI.\n4) Passport.");
 		selection = Integer.parseInt(sc.nextLine());
 		
+		
+		// Agregar los try catch.
 		switch (selection) {
 		case 1:
 			type = CC;			
