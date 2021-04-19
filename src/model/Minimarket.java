@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.IncorrectDayException;
 import exceptions.NotAcceptedPersonException;
 
 public class Minimarket {
@@ -42,8 +43,9 @@ public class Minimarket {
 		return admittedPersons;
 	}
 	
-	public String enterOrNot(String t, int n) throws NotAcceptedPersonException{
+	public void enterOrNot(String t, int n, boolean d) throws NotAcceptedPersonException, IncorrectDayException{
 		enterTries += 1;
+		boolean accepted = false;
 		
 		if(t.equalsIgnoreCase(CC) || t.equalsIgnoreCase(CE) || t.equalsIgnoreCase(P)) {
 			String nStr = n + "";
@@ -52,15 +54,30 @@ public class Minimarket {
 			
 			n = Integer.parseInt(nStr);
 			
-			if(n%2 == 0) {
-				addPerson(t,n);
+			if(d) {
+				if(n%2 == 0) {
+					addPerson(t,n);
+					accepted = true;
+					
+				}
 				
-				return "Succcessful entry!";
+				else {
+					throw new IncorrectDayException(accepted);
+				}
 			}
 			
-			else {
-				throw new NotAcceptedPersonException(types);
+			else{
+				if(n%2 !=0) {
+					addPerson(t, n);
+					accepted = true;
+					
+				}
+				
+				else {
+					throw new IncorrectDayException(accepted);
+				}
 			}
+
 		}
 		
 		else{
